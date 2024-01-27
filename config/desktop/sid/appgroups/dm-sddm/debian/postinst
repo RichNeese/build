@@ -1,0 +1,29 @@
+#Set sddm theme background
+if [ -f /usr/share/sddm/themes/debian-breeze/theme.conf ]; then
+cat <<-EOF >> /usr/share/sddm/themes/debian-breeze/theme.conf.user
+background=/usr/share/backgrounds/armbian/armbian03-Dre0x-Minum-dark-3840x2160.jpg
+EOF
+fi
+
+# set hidpi
+mkdir -p /etc/sddm.conf.d
+cat <<-EOF >> /etc/sddm.conf.d/hidpi.conf
+[Wayland]
+EnableHiDPI=true
+
+[X11]
+EnableHiDPI=true
+EOF
+
+#enable virtual keyboard
+cat <<-EOF >> /etc/sddm.conf.d/virtualkbd.conf
+[General]
+InputMethod=qtvirtualkeyboard
+EOF
+
+#default tty7 for sddm
+cat <<-EOF >> /etc/sddm.conf.d/tty.conf
+[X11]
+MinimumVT=7
+EOF
+
