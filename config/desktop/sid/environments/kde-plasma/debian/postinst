@@ -1,5 +1,40 @@
-# overwrite stock lightdm greeter configuration
-if [ -d /etc/armbian/lightdm ]; then cp -R /etc/armbian/lightdm /etc/; fi
+##dconf desktop settings
+keys=/etc/dconf/db/local.d/00-desktop
+profile=/etc/dconf/profile/user
 
-# Disable Pulseaudio timer scheduling which does not work with sndhdmi driver
-if [ -f /etc/pulse/default.pa ]; then sed "s/load-module module-udev-detect$/& tsched=0/g" -i  /etc/pulse/default.pa; fi
+install -Dv /dev/null $keys
+install -Dv /dev/null $profile
+
+# gather dconf settings
+# deconf dump org/nemo/ > nemo_backup
+# deconf dump org/mate/ > mate_desktop_backup
+
+
+[org/gnome/desktop/interface]
+gtk-theme='NumixBlue'
+
+[org/gnome/evolution-data-server]
+migrated=true
+network-monitor-gio-name=''
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=148
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(417, 150)
+window-size=(1096, 822)" >> $keys
+
+echo "user-db:user
+system-db:local" >> $profile
+
+dconf update
+
+#re-compile schemas
+if [ -d /usr/share/glib-2.0/schemas ]; then glib-compile-schemas /usr/share/glib-2.0/schemas; fi
