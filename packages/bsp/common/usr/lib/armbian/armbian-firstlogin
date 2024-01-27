@@ -273,7 +273,7 @@ add_user() {
 
 			adduser --quiet --disabled-password --home /home/"$RealUserName" --gecos "$RealName" "$RealUserName"
 			if [[ -n "$first_input" ]]; then
-				(
+			(
 					echo "$first_input"
 					echo "$second_input"
 				) | passwd "$RealUserName" > /dev/null 2>&1
@@ -453,10 +453,6 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 		[[ -x $(command -v gnome-session) ]] && sed -i "s/user-session.*/user-session=ubuntu/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
 		[[ -x $(command -v gnome-session) ]] && sed -i "s/user-session.*/user-session=ubuntu/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
 
-		# select awesome session
-		[[ -x $(command -v awesome) ]] && sed -i "s/user-session.*/user-session=awesome/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
-		[[ -x $(command -v awesome) ]] && sed -i "s/user-session.*/user-session=awesome/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
-
 		# select budgie session
 		[[ -x $(command -v budgie-desktop) ]] && sed -i "s/user-session.*/user-session=budgie-desktop/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
 		[[ -x $(command -v budgie-desktop) ]] && sed -i "s/user-session.*/user-session=budgie-desktop/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
@@ -472,10 +468,6 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 		# select ice-wm session
 		[[ -x $(command -v icewm-session) ]] && sed -i "s/user-session.*/user-session=icewm-session/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
 		[[ -x $(command -v icewm-session) ]] && sed -i "s/user-session.*/user-session=icewm-session/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
-
-		# select i3 session
-		[[ -x $(command -v i3) ]] && sed -i "s/user-session.*/user-session=i3/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
-		[[ -x $(command -v i3) ]] && sed -i "s/user-session.*/user-session=i3/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
 
 		# select lxde session
 		[[ -x $(command -v startlxde) ]] && sed -i "s/user-session.*/user-session=LXDE/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
@@ -493,13 +485,9 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 		[[ -x $(command -v plasmashell) ]] && sed -i "s/user-session.*/user-session=plasmawayland/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
 		[[ -x $(command -v plasmashell) ]] && sed -i "s/user-session.*/user-session=plasmawayland/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
 
-		# select sway wayland session
-		[[ -x $(command -v sway) ]] && sed -i "s/user-session.*/user-session=sway/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
-		[[ -x $(command -v sway) ]] && sed -i "s/user-session.*/user-session=sway/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
-
-		# select xmonad session
-		[[ -x $(command -v xmonad) ]] && sed -i "s/user-session.*/user-session=xmonad/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
-		[[ -x $(command -v xmonad) ]] && sed -i "s/user-session.*/user-session=xmonad/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
+		# select xfce session
+		[[ -x $(command -v xfwm4) ]] && sed -i "s/user-session.*/user-session=xfce/" /etc/lightdm/lightdm.conf.d/11-armbian.conf
+		[[ -x $(command -v xfwm4) ]] && sed -i "s/user-session.*/user-session=xfce/" /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
 
 		ln -sf /lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
 
@@ -520,6 +508,67 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 			# logout if logged at console
 			who -la | grep root | grep -q tty1 && exit 1
 		fi
+
+	elif [[ "${desktop_dm}" == "sddm" ]] && [ -n "$RealName" ] ; then
+
+			# 1st run goes without login
+			mkdir -p /etc/sddm.conf.d
+			cat <<-EOF > /etc/sddm.conf.d/armbian-autologin.conf
+			[Autologin]
+			User=$RealUserName
+			Session=Session.desktop
+			Relogin=false
+			EOF
+
+			# select gnome session (has to be first or it breaks budgie/cinnamon desktop autologin and Session)
+			[[ -x $(command -v gnome-session) ]] && sed -i "s/Session.*/Session=ubuntu/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select budgie session
+			#[[ -x $(command -v budgie-desktop) ]] && sed -i "s/Session.*/Session=budgie-desktop/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select cinnamon session
+			[[ -x $(command -v cinnamon) ]] && sed -i "s/Session.*/Session=cinnamon/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select deepin session
+			[[ -x $(command -v deepin-wm) ]] && sed -i "s/Session.*/Session=deepin/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select ice-wm session
+			[[ -x $(command -v icewm-session) ]] && sed -i "s/Session.*/Session=icewm/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select lxde session
+			[[ -x $(command -v startlxde) ]] && sed -i "s/Session.*/Session=LXDE/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select lxqt session
+			[[ -x $(command -v startlxqt) ]] && sed -i "s/Session.*/Session=lxqt/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select mate session
+			[[ -x $(command -v mate-wm) ]] && sed -i "s/Session.*/etc//Session=mate/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			# select plasma wayland session
+			[[ -x $(command -v plasmashell) ]] && sed -i "s/Session.*/Session=plasma/" /etc/sddm.conf.d/armbian-autologin.comf
+
+			# select plasma xfce4 session
+			[[ -x $(command -v xfwm4) ]] && sed -i "s/Session.*/Session=xfce/" /etc/sddm.conf.d/armbian-autologin.conf
+
+			ln -sf /lib/systemd/system/sddm.service /etc/systemd/system/display-manager.service
+
+			if [[ -f /var/run/resize2fs-reboot ]]; then
+				# Let the user reboot now otherwise start desktop environment
+				printf "\n\n\e[0;91mWarning: a reboot is needed to finish resizing the filesystem \x1B[0m \n"
+				printf "\e[0;91mPlease reboot the system now \x1B[0m \n\n"
+			else
+				echo -e "\n\e[1m\e[39mNow starting desktop environment...\x1B[0m\n"
+				sleep 1
+				service sddm start 2>/dev/null
+				if [ -f /root/.desktop_autologin ]; then
+					rm /root/.desktop_autologin
+				else
+					systemctl -q enable armbian-disable-sddm-autologin.timer
+					systemctl start armbian-disable-sddm-autologin.timer
+				fi
+				# logout if logged at console
+				who -la | grep root | grep -q tty1 && exit 1
+			fi
 
 	elif [[ "${desktop_dm}" == "gdm3" ]] && [ -n "$RealName" ]; then
 		# 1st run goes without login
@@ -551,10 +600,7 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 			# logout if logged at console
 			who -la | grep root | grep -q tty1 && exit 1
 		fi
-	elif [[ "${desktop_dm}" == "sddm" ]] && [ -n "$RealName" ]; then
-		# No hacks for sddm. User will have to input password again, and have  chance to choose session wayland
-		echo -e "\n\e[1m\e[39mNow starting desktop environment via ${desktop_dm}...\x1B[0m\n"
-		systemctl enable --now sddm
+
 	else
 		# no display manager detected
 		# Display reboot recommendation if necessary
