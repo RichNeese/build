@@ -23,9 +23,9 @@ function post_debootstrap_tweaks() {
 	fi
 
 	# remove service start blockers
-	run_host_command_logged rm -fv "${SDCARD}"/usr/sbin/initctl "${SDCARD}"/usr/sbin/start-stop-daemon
-	chroot_sdcard dpkg-divert --quiet --local --rename --remove /usr/sbin/initctl
-	chroot_sdcard dpkg-divert --quiet --local --rename --remove /usr/sbin/start-stop-daemon
+	run_host_command_logged rm -fv "${SDCARD}"/usr/usr/sbin/initctl "${SDCARD}"/usr/usr/sbin/start-stop-daemon
+	chroot_sdcard dpkg-divert --quiet --local --rename --remove /usr/usr/sbin/initctl
+	chroot_sdcard dpkg-divert --quiet --local --rename --remove /usr/usr/sbin/start-stop-daemon
 	run_host_command_logged rm -fv "${SDCARD}"/usr/sbin/policy-rc.d
 
 	# remove the qemu static binary

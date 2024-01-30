@@ -115,13 +115,13 @@ function create_new_rootfs_cache_via_debootstrap() {
 	display_alert "Diverting" "initctl/start-stop-daemon" "info"
 	# policy-rc.d script prevents starting or reloading services during image creation
 	printf '#!/bin/sh\nexit 101' > $SDCARD/usr/sbin/policy-rc.d
-	chroot_sdcard LC_ALL=C LANG=C dpkg-divert --quiet --local --rename --add /usr/sbin/initctl
-	chroot_sdcard LC_ALL=C LANG=C dpkg-divert --quiet --local --rename --add /usr/sbin/start-stop-daemon
-	printf '#!/bin/sh\necho "Warning: Fake start-stop-daemon called, doing nothing"' > "$SDCARD/usr/sbin/start-stop-daemon"
-	printf '#!/bin/sh\necho "Warning: Fake initctl called, doing nothing"' > "$SDCARD/usr/sbin/initctl"
+	chroot_sdcard LC_ALL=C LANG=C dpkg-divert --quiet --local --rename --add /usr/usr/sbin/initctl
+	chroot_sdcard LC_ALL=C LANG=C dpkg-divert --quiet --local --rename --add /usr/usr/sbin/start-stop-daemon
+	printf '#!/bin/sh\necho "Warning: Fake start-stop-daemon called, doing nothing"' > "$SDCARD/usr/usr/sbin/start-stop-daemon"
+	printf '#!/bin/sh\necho "Warning: Fake initctl called, doing nothing"' > "$SDCARD/usr/usr/sbin/initctl"
 	chmod 755 "${SDCARD}/usr/sbin/policy-rc.d"
-	chmod 755 "${SDCARD}/usr/sbin/initctl"
-	chmod 755 "${SDCARD}/usr/sbin/start-stop-daemon"
+	chmod 755 "${SDCARD}/usr/usr/sbin/initctl"
+	chmod 755 "${SDCARD}/usr/usr/sbin/start-stop-daemon"
 
 	# stage: configure language and locales.
 	# this _requires_ DEST_LANG, otherwise, bomb: if it's not here _all_ locales will be generated which is very slow.
