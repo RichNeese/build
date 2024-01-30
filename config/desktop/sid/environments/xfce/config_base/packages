@@ -1,4 +1,3 @@
-alsa-utils
 anacron
 appmenu-gtk3-module
 apt-config-auto-update
@@ -44,11 +43,6 @@ gtk2-engines-pixbuf
 gvfs-backends
 hunspell-en-us
 hyphen-en-us
-ibus
-ibus-data
-ibus-gtk
-ibus-gtk3
-ibus-gtk4
 inputattach
 inxi
 keyutils
@@ -106,8 +100,6 @@ software-properties-gtk
 spice-vdagent
 synaptic
 tango-icon-theme
-task-desktop
-task-xfce-desktop
 tree
 thunar-archive-plugin
 thunar-media-tags-plugin
