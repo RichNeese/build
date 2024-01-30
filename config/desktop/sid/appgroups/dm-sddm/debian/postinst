@@ -1,7 +1,7 @@
 #Set sddm theme background
 if [ -f /usr/share/sddm/themes/debian-breeze/theme.conf ]; then
 cat <<-EOF >> /usr/share/sddm/themes/debian-breeze/theme.conf.user
-background=/usr/share/backgrounds/armbian/armbian03-Dre0x-Minum-dark-3840x2160.jpg
+background=/usr/share/backgrounds/sddm-wallpapers/Blue-Yellow-Fractial-Abstract.jpg
 EOF
 fi
 
