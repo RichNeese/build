@@ -4,11 +4,11 @@ cp -r "${SRC}"/packages/blobs/desktop/debian/xdg-xfce "${destination}"/etc/riscv
 
 #install desktop menu icons
 mkdir -p "${destination}"/usr/share/icons/riscv
-cp -r "${SRC}"/packages/blobs/desktop/desktop-icons/. "${destination}"/usr/share/icons/riscv
+cp -r "${SRC}"/packages/blobs/desktop/dt-icons/. "${destination}"/usr/share/icons/riscv
 
 # install desktop wallpapers
 mkdir -p "${destination}"/usr/share/backgrounds/riscv
-cp -r "${SRC}"/packages/blobs/desktop/desktop-wallpapers/. "${destination}"/usr/share/backgrounds/riscv/
+cp -r "${SRC}"/packages/blobs/desktop/dt-wallpapers/. "${destination}"/usr/share/backgrounds/riscv/
 
 # install logo for login screen
 mkdir -p "${destination}"/usr/share/pixmaps/riscv
@@ -118,7 +118,7 @@ cat <<EOF > "${destination}"/usr/share/xfce-background-properties/riscv.xml
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
-  </wallpaper> 
+  </wallpaper>
   <wallpaper deleted="false">
     <name>riscv blue-monday</name>
     <filename>/usr/share/backgrounds/riscv/Blue-Yellow-V-Stripe.jpg</filename>
@@ -132,6 +132,6 @@ cat <<EOF > "${destination}"/usr/share/xfce-background-properties/riscv.xml
     <options>zoom</options>
     <pcolor>#ffffff</pcolor>
     <scolor>#000000</scolor>
-  </wallpaper>    
+  </wallpaper>
 </wallpapers>
 EOF

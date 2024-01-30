@@ -59,8 +59,6 @@ liblcms2-utils
 libnss-mdns
 libpam-gnome-keyring
 libpam-systemd
-libproxy1-plugin-gsettings
-libproxy1-plugin-networkmanager
 librsvg2-common
 libspa-0.2-bluetooth
 libxapp1
