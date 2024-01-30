@@ -1,9 +1,9 @@
-# RISC-V Pine64 Star64
-BOARD_NAME="Star64"
+# RISC-V Pine64 PineTabV
+BOARD_NAME="PineTabV"
 BOARDFAMILY="starfive2"
 BOARD_MAINTAINER=""
-KERNEL_TARGET="edge"
-BOOT_FDT_FILE="starfive/jh7110-star64-pine64.dtb"
+KERNEL_TARGET="current"
+BOOT_FDT_FILE="starfive/jh7110-star64-pinetabv.dtb"
 SRC_EXTLINUX="yes"
 SRC_CMDLINE="console=ttyS0,115200n8 console=tty0 earlycon=sbi rootflags=data=writeback stmmaceth=chain_mode:1 rw"
 BOOTCONFIG=none

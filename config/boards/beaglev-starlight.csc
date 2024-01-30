@@ -2,7 +2,7 @@
 BOARD_NAME="BeagleV"
 BOARDFAMILY="starfive"
 BOARD_MAINTAINER=""
-KERNEL_TARGET="edge"
+KERNEL_TARGET="current,edge"
 BOOT_FDT_FILE="starfive/jh7100-beaglev-starlight-a1.dtb"
 SRC_EXTLINUX="yes"
 SRC_CMDLINE="console=ttyS0,115200n8 console=tty0 earlycon=sbi rootflags=data=writeback stmmaceth=chain_mode:1 rw"

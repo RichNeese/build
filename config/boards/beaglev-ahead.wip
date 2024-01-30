@@ -1,0 +1,12 @@
+# RISC-V BeagleV Ahead
+BOARD_NAME="BeagleV Ahead"
+BOARDFAMILY="thead"
+BOARD_MAINTAINER=""
+KERNEL_TARGET="edge"
+BOOT_FDT_FILE="thead/th1520-beaglev-ahead.dtb"
+SRC_EXTLINUX="yes"
+SRC_CMDLINE="console=ttyS0,115200 rootwait rw earlycon clk_ignore_unused loglevel=7 eth=\$ethaddr tsched=0 rootrwoptions=rw,noatime rootrwreset=yes"
+BOOTCONFIG="light_lpi4a_defconfig"
+BOOTFS_TYPE="ext4"
+BOOTSIZE="512"
+
