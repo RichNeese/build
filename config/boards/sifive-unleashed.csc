@@ -1,5 +1,5 @@
 # RISC-V SiFive Unleashed
-BOARD_NAME="Unleashed"
+BOARD_NAME="Sifive Unleashed"
 BOARDFAMILY="starfive"
 BOARD_MAINTAINER=""
 KERNEL_TARGET="edge"

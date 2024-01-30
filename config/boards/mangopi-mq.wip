@@ -1,5 +1,5 @@
-# RISC-V MangoPi MQ Pro
-BOARD_NAME="MangoPi MQ Pro"
+# RISC-V MangoPi MQ
+BOARD_NAME="MangoPi MQ"
 BOARDFAMILY="d1"
 KERNEL_TARGET="current,edge"
 FULL_DESKTOP="yes"

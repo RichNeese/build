@@ -1,5 +1,5 @@
-# RISC-V StarFive BeagleV
-BOARD_NAME="BeagleV"
+# RISC-V StarFive BeagleV starlight
+BOARD_NAME="BeagleV Starlight"
 BOARDFAMILY="starfive"
 BOARD_MAINTAINER=""
 KERNEL_TARGET="current,edge"

@@ -1,5 +1,5 @@
 # RISC-V StarFive Visionfive V1
-BOARD_NAME="VisionFive"
+BOARD_NAME="StarFive VisionFive"
 BOARDFAMILY="starfive"
 BOARD_MAINTAINER=""
 KERNEL_TARGET="current,edge"

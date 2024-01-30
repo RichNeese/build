@@ -1,5 +1,5 @@
 # RISC-V SiFive Unmatched
-BOARD_NAME="Unmatched"
+BOARD_NAME="Sifive Unmatched"
 BOARDFAMILY="starfive"
 BOARD_MAINTAINER=""
 KERNEL_TARGET="edge"

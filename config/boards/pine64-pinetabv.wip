@@ -1,5 +1,5 @@
 # RISC-V Pine64 PineTabV
-BOARD_NAME="PineTabV"
+BOARD_NAME="Pine64 PineTabV"
 BOARDFAMILY="starfive2"
 BOARD_MAINTAINER=""
 KERNEL_TARGET="current"
