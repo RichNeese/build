@@ -11,7 +11,11 @@ blackbird-gtk-theme
 bluebird-gtk-theme
 blueman
 bluez
-blue-tools
+bluez-alsa-utils
+bluez-hcidump
+bluez-test-scripts
+bluez-test-tools
+bluez-tools
 breeze-icon-theme
 calendar
 calibre

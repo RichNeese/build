@@ -1,6 +1,6 @@
 # install default desktop settings
 mkdir -p "${destination}"/etc/riscv
-cp -r "${SRC}"/packages/blobs/desktop/debian/xdg-mate "${destination}"/etc/riscv
+cp -r "${SRC}"/packages/blobs/desktop/debian/xdg-budgie "${destination}"/etc/riscv
 
 #install desktop menu icons
 mkdir -p "${destination}"/usr/share/icons/riscv
@@ -15,10 +15,10 @@ mkdir -p "${destination}"/usr/share/pixmaps/riscv
 cp -r "${SRC}"/packages/blobs/desktop/icons/. "${destination}"/usr/share/pixmaps/riscv
 
 #generate wallpaper list for background changer
-mkdir -p "${destination}"/usr/share/xfce-background-properties
-cat <<EOF > "${destination}"/usr/share/xfce-background-properties/riscv.xml
+mkdir -p "${destination}"/usr/share/budgie-background-properties
+cat <<EOF > "${destination}"/usr/share/budgie-background-properties/riscv.xml
 <?xml version="1.0"?>
-<!DOCTYPE wallpapers SYSTEM "xfce-wp-list.dtd">
+<!DOCTYPE wallpapers SYSTEM "budgie-wp-list.dtd">
 <wallpapers>
   <wallpaper deleted="false">
     <name>riscv logo0</name>

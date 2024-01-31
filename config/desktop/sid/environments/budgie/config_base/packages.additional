@@ -30,6 +30,7 @@ liblcms2-utils
 libgck-1-0
 libgtk-3-bin
 libpam-gnome-keyring
+libpipewire-0.3-modules
 libspa-0.2-bluetooth
 libxapp1
 mousepad
@@ -63,7 +64,6 @@ xorg-docs
 xinput
 x11-xfs-utils
 x11-utils
-xauth
 xscreensaver
 xsensors
 xwallpaper

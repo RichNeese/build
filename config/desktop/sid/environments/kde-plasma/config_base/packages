@@ -1,5 +1,6 @@
 accountwizard
 anacron
+avahi-daemon
 blackbird-gtk-theme
 bluebird-gtk-theme
 bluedevil
@@ -16,8 +17,6 @@ fonts-hack
 fonts-noto
 fonts-noto-hinted
 fonts-symbola
-<<<<<<< HEAD
-avahi-daemon
 greybird-gtk-theme
 hyphen-en-us
 ibus-data
@@ -29,7 +28,6 @@ kde-config-gtk-style
 kde-config-mailtransport
 kde-config-sddm
 kde-config-screenlocker
-=======
 foomatic-db-compressed-ppds
 gdebi
 gnome-screenshot
@@ -44,7 +42,6 @@ gvfs-backends
 hplip
 hunspell-en-us
 inputattach
->>>>>>> main
 kde-plasma-desktop
 kde-style-oxygen-qt5
 kdeaccessibility

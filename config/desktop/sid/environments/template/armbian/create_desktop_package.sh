@@ -1,6 +1,6 @@
 # install default desktop settings
 mkdir -p "${destination}"/etc/riscv
-cp -r "${SRC}"/packages/blobs/desktop/debian/xdg-mate "${destination}"/etc/riscv
+cp -r "${SRC}"/packages/blobs/desktop/debian/xdg-(name) "${destination}"/etc/riscv
 
 #install desktop menu icons
 mkdir -p "${destination}"/usr/share/icons/riscv

@@ -10,8 +10,11 @@ blackbird-gtk-theme
 bluebird-gtk-theme
 blueman
 bluez
-bluez-tools
-calendar
+bluez-alsa-utils
+bluez-hcidump
+bluez-test-scripts
+bluez-test-tools
+bluez-toolscalendar
 cifs-utils
 colord
 desktop-base
